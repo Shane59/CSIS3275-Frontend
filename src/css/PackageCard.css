@@ -1,0 +1,29 @@
+.card {
+  width: 18rem;
+}
+
+.btn {
+  background-color: #E89214;
+  border: #E89214;
+}
+
+.card-body {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-text::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.card-footer {
+  background: none;
+  border: none;
+}
