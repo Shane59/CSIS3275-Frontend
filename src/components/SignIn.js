@@ -56,7 +56,7 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <Button
-              id="signUpBtn"
+              id="signInBtn"
               type="submit"
               fullWidth
               variant="contained"

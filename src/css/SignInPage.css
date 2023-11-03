@@ -19,15 +19,16 @@ SignInUpPage.css
 }
 
 
-#signUpBtn, #signIpBtn {
-    background-color: #034780;
-}
-
-.nav-link.active, show > .nav-link {
-    color: white !important;
-    background-color: #034780 !important;
+#signUpBtn, #signInBtn {
+    background-color: #E89214;
 }
 
  #signUpTab, #signInTab {
-    color: #034780;
+    color: black;
 }
+
+#signUpTab:hover, #signInTab:hover {
+    color: white;
+    background-color: #E89214;
+}
+
