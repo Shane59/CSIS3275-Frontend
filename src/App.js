@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <PackageCard />
       <Routes>
         <Route path='/signin' element={<SignInUpPage />} />
       </Routes>
