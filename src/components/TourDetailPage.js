@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import TourBuddySection from "./TourBuddySection";
 
 /**
  * Detail page should have following data
@@ -33,7 +34,7 @@ const TourDetailPage = () => {
         <img className="col w-50" src={tempTour.url} alt="" />
       </div>
       <div className="tour-buddy-wrapper">
-        {/* list of recommended buddies */}
+        <TourBuddySection />
       </div>
     </div>
   )

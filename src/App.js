@@ -7,6 +7,7 @@ import SignInUpPage from './components/SignInUpPage';
 import {Routes, Route} from 'react-router-dom';
 
 import TourDetailPage from './components/TourDetailPage';
+import TourBuddyDetail from './components/TourBuddyDetail';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         />
         <Route path='/signin' element={<SignInUpPage />} />
         <Route path='/tours/:tourId' element={<TourDetailPage />} />
+        <Route path='/tourbuddy/:tourBuddyId' element={<TourBuddyDetail />} />
       </Routes>
     </div>
 
