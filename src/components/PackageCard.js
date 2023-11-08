@@ -7,11 +7,12 @@ import '../css/PackageCard.css'
  * - Location
  * - Description
  * - id (no display)
+ * - img url
  */
 const PackageCard = (props) => {
   return (
     <div className="card">
-      <img className="card-img-top" src="https://fakeimg.pl/440x320/282828/eae0d0/?retina=1" alt="tour image" />
+      <img className="card-img-top" src={props.url} alt="tour image" />
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
         <div className="">{props.location}</div>
