@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../css/SignInPage.css';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import { NavLink } from 'react-router-dom';
 
  function SignInUpPage() {
 
@@ -17,7 +18,11 @@ import SignUp from './SignUp';
         </nav>
         { signIn === "SignIn" ?  <SignIn/> : signIn === "SignUp" ? <SignUp /> : null}
         
+       
+
+
       </div>
+       {/* //Add travel buddy sign up link */}
     </div>
   )
 }

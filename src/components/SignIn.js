@@ -69,6 +69,13 @@ export default function SignIn() {
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
+
+              </Grid>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                Become a Travel Buddy
+                </Link>
+
               </Grid>
             </Grid>
           </Box>
@@ -76,4 +83,8 @@ export default function SignIn() {
       </Container>
     </ThemeProvider>
   );
-}
+} //               {/* <Link href="travelBuddySignUp">
+    //            <br />
+      //            Apply to be a Travel Buddy
+//
+  //              </Link> */}
