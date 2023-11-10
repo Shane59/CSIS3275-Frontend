@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import '../css/PackageCard.css'
 
 /**
@@ -19,7 +20,7 @@ const PackageCard = (props) => {
         <div className="card-text">{props.desc}</div>
       </div>
       <div className="card-footer">
-        <a className="btn btn-primary" href={`/tours/:${props.id}`}>more</a>
+        <Link className="btn btn-primary" to={`/tours/:${props.id}`}>more</Link>
       </div>
     </div>
   )
