@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import {Link} from "react-router-dom";
 import "../css/TourBuddyCard.css";
 
@@ -9,8 +10,9 @@ import "../css/TourBuddyCard.css";
  * - rate?
  */
 const TourBuddyCard = (props) => {
+  const { tourId } = useParams();
   return (
-    <Link to={`/tourbuddy/:${props.id}`} className="card tour-buddy-card">
+    <Link to={`/${tourId}/tourbuddy/${props.id}`} className="card tour-buddy-card">
       <div className=" mb-3">
         <div className="row g-0">
           <div className="col-md-4">
