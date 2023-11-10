@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import PackageCard from './components/PackageCard';
 import SignInUpPage from './components/SignInUpPage';
 import {Routes, Route} from 'react-router-dom';
+import Footer from './components/Footer'
 
 import TourDetailPage from './components/TourDetailPage';
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/signin' element={<SignInUpPage />} />
         <Route path='/tours/:tourId' element={<TourDetailPage />} />
       </Routes>
+      <Footer/>
     </div>
 
   );

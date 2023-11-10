@@ -1,0 +1,25 @@
+.bg-custom {
+    background-color: #E89214 !important;
+  }
+  .text-custom {
+    color: #ffffff;
+  }
+  .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .footer-link:hover {
+    text-decoration: underline;
+  }
+  .border-custom {
+    border-color: #ffffff !important;
+  }
+  .navbar{
+    background-color: #E89214 !important;
+  }
+  .navbar img{
+    height: 70px;
+    width: 150px; 
+  }
+  
+  
