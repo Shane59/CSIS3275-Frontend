@@ -2,7 +2,6 @@ import React,  {useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -73,7 +72,6 @@ export default function SignUp() {
                   name="lastName"
                   autoComplete="family-name"
                   onChange={(event) => setLastName(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
@@ -85,7 +83,6 @@ export default function SignUp() {
                   name="username"
                   autoComplete="username"
                   onChange={(event) => setUsername(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
@@ -97,7 +94,6 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                   onChange={(event) => setEmail(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
@@ -134,10 +130,6 @@ export default function SignUp() {
             >
               Create Account
             </Button>
-            <Link href="travelBuddySignUp">
-                <br />
-                  Become a Travel Buddy
-                </Link>
             <Grid container justifyContent="flex-end">
             </Grid>
           </Box>
