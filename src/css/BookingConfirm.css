@@ -1,0 +1,10 @@
+.booking-confirmation-wrapper svg {
+  font-size: 100px;
+}
+
+.divider {
+  border: 1px solid #97A7B3;
+  max-width: 1px;
+  padding: 1px;
+  background: #97A7B3;
+}

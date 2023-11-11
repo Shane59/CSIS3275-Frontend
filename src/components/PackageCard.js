@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import '../css/PackageCard.css'
 
 /**
@@ -7,18 +8,19 @@ import '../css/PackageCard.css'
  * - Location
  * - Description
  * - id (no display)
+ * - img url
  */
 const PackageCard = (props) => {
   return (
     <div className="card">
-      <img className="card-img-top" src="https://fakeimg.pl/440x320/282828/eae0d0/?retina=1" alt="tour image" />
+      <img className="card-img-top" src={props.url} alt="tour image" />
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
         <div className="">{props.location}</div>
         <div className="card-text">{props.desc}</div>
       </div>
       <div className="card-footer">
-        <a className="btn btn-primary" href={`/tours/:${props.id}`}>more</a>
+        <Link className="btn btn-primary" to={`/tours/:${props.id}`}>more</Link>
       </div>
     </div>
   )
