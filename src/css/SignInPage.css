@@ -4,7 +4,6 @@ SignUp.css
 SignInUpPage.css
 */
 
-
 #SignInPageChild {
     display: flex;
     flex-direction: column;
@@ -18,17 +17,15 @@ SignInUpPage.css
     justify-content: center;
 }
 
-
 #signUpBtn, #signInBtn {
     background-color: #E89214;
 }
 
- #signUpTab, #signInTab {
+ #signUpTab, #signInTab, #tbSignUpTap {
     color: black;
 }
 
-#signUpTab:hover, #signInTab:hover {
+#signUpTab:hover, #signInTab:hover, #tbSignUpTap:hover {
     color: white;
     background-color: #E89214;
 }
-

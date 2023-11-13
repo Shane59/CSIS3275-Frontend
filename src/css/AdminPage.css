@@ -1,0 +1,87 @@
+/* CSS for 
+ToursAdmin.js
+TravelBuddiesAdmin.js 
+ProfileAdmin.js 
+BookingsAdmin.js
+AdminProfile.js
+AdminPage.js
+*/
+
+li {
+    list-style: none;
+}
+
+/*Headers in all admin components*/
+.adminPageHeaders { 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #e9e9e9;
+    height: 20vh;
+    min-height: 100px;
+    padding-left: 100px;
+}
+
+/* AdminPage.js */
+#adminSidebar {
+    background-color: #E89214;
+    color: white;
+    float: left;
+    height: 100vh;
+    width: 17.5%;
+    text-decoration: none;
+    padding: 20px;
+    min-width: 200px;
+}
+
+
+.nav-link {
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.nav-link.active {
+    background-color: #CF7900;
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #9C4600;
+    color: white;
+}
+
+
+/* ToursAdmin.js */
+#tourAdminTable, #bookingAdminTable, #travelBuddyTable {
+    width: 82.5%;
+    margin: 25px;
+    min-width: 950px;
+}
+
+#deleteBtn {
+    background-color: red;
+}
+
+#deleteBtn:hover {
+    background-color: darkred;
+}
+#editBtn {
+    background-color: #0d6efd;
+}
+#addTourBtn {
+    text-decoration: none;
+    color: white;
+    background-color: #0d6efd;
+    margin-left: 500px;
+}
+
+#editBtn:hover, #addTourBtn:hover {
+    background-color: #003BCA;
+}
+
+/* TravelBuddiesAdmin.js*/
+ #approvedBtn, #pendingBtn {
+    margin-top: 10px;
+    margin-left: 10px;
+}

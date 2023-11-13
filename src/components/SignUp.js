@@ -72,7 +72,6 @@ export default function SignUp() {
                   name="lastName"
                   autoComplete="family-name"
                   onChange={(event) => setLastName(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
@@ -84,7 +83,6 @@ export default function SignUp() {
                   name="username"
                   autoComplete="username"
                   onChange={(event) => setUsername(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
@@ -96,7 +94,6 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                   onChange={(event) => setEmail(event.target.value)}
-
                 />
               </Grid>
               <Grid item xs={12}>
