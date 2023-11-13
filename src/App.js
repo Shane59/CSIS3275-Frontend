@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import PackageCard from './components/PackageCard';
 import SignInUpPage from './components/SignInUpPage';
+import Footer from './components/Footer'
 import {Routes, Route, Navigate} from 'react-router-dom';
 import TourDetailPage from './components/TourDetailPage';
 import TourBuddyDetail from './components/TourBuddyDetail';
@@ -47,6 +48,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
+        <Footer/>
       </div>
     </div>
   );
