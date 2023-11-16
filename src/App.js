@@ -48,8 +48,8 @@ function App() {
             </Route>
           </Route>
         </Routes>
-        <Footer/>
       </div>
+      <Footer/>
     </div>
   );
 }
