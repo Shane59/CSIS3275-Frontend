@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TourBuddySection from "./TourBuddySection";
@@ -10,9 +10,19 @@ import TourBuddySection from "./TourBuddySection";
  * - description
  * - image
  */
-const TourDetailPage = () => {
+const TourDetailPage = (props) => {
   const { tourId } = useParams();
   const [tour, setTour] = useState();
+
+  
+  useEffect(() => {
+    const selected = props.tourData.find((tour) => tour.tourID == tourId);
+    console.log("tours:");
+    setTour(selected);
+    console.log(tour);
+  }, [])
+  
+
 // delete this later
   const tempTour = {
     name: "Granville Island Beer Hopping",
@@ -24,19 +34,25 @@ const TourDetailPage = () => {
   // include a logic to retrieve a tour information
 
   return (
-    <div>
-      <h2 className="text-center">{tempTour.name}</h2>
-      <div className="mb-3"><LocationOnIcon />{tempTour.location}</div>
-      <div className="row">
-        <div className="col w-50">
-          {tempTour.desc}
+      <>
+      {tour !== undefined ?
+      <div className="mt-5">
+        <h2 className="text-center">{tour.tourName}</h2>
+        <div className="mb-3"><LocationOnIcon />{tour.location}</div>
+        <div className="row">
+          <div className="col w-50">
+            {tour.description}
+          </div>
+          <img className="col w-50" src={tour.imageURL} alt="image" />
         </div>
-        <img className="col w-50" src={tempTour.url} alt="" />
-      </div>
-      <div className="tour-buddy-wrapper">
-        <TourBuddySection />
-      </div>
-    </div>
+        <div className="tour-buddy-wrapper">
+          <TourBuddySection />
+        </div>
+        </div>
+        :
+        null
+      }
+      </>
   )
 }
 
