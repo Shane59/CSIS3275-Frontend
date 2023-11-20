@@ -18,10 +18,11 @@ import AdminPage from './components/AdminPage';
 import TopTourSection from './components/TopTourSection';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import config from './config';
 
 function App() {
   const api = axios.create({
-    baseURL: "http://localhost:8082",
+    baseURL: config.apiUrl,
     withCredentials: true,
   })
   const [tourData, setTourData] = useState([]);

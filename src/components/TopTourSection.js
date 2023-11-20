@@ -10,6 +10,7 @@ const TopTourSection = (props) => {
     let cards = [];
     props.tourData.forEach((data) => {
       cards.push(<PackageCard
+        key={data.tourID}
         title={data.tourName}
         location={data.location}
         url={data.imageURL}
