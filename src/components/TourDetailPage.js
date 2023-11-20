@@ -10,9 +10,7 @@ const TourDetailPage = (props) => {
   
   useEffect(() => {
     const selected = props.tourData.find((tour) => tour.tourID == tourId);
-    console.log("tours:");
     setTour(selected);
-    console.log(tour);
   }, [])
 
   return (
