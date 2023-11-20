@@ -21,15 +21,10 @@ import { useEffect, useState } from 'react';
 import config from './config';
 
 function App() {
-  const api = axios.create({
-    baseURL: config.apiUrl,
-    withCredentials: true,
-  })
   const [tourData, setTourData] = useState([]);
-  // const [tourCardsElement, setTourCardsElements] = useState();
   
   useEffect(() => {
-    api.get('/api/tours')
+    axios.get(config.apiUrl + '/api/tours')
       .then(response => {
         setTourData(response.data)
         console.log(response.data);
