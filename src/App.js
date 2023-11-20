@@ -16,6 +16,7 @@ import AddTour from './components/AddTour';
 import ApprovedTravelBuddies from './components/ApprovedTravelBuddies';
 import PendingTravelBuddies from './components/PendingTravelBuddies';
 import AdminPage from './components/AdminPage';
+import UserAccount from './components/UserAccount';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
               <Route path='pending' element={<PendingTravelBuddies />} />
             </Route>
           </Route>
+          <Route path="useraccount" element={<UserAccount/>}/>
         </Routes>
       </div>
       <Footer/>

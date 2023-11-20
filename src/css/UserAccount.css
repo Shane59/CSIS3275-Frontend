@@ -1,0 +1,73 @@
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.account-container {
+    display: flex;
+}
+
+.sidebar {
+    min-width: 250px;
+    background-color: #E89214;
+    color: white;
+    height: 100vh;
+}
+
+.navigation .menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    padding: 15px;
+    border-bottom: 1px solid #f3a567;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    background-color: #cb7e12;
+}
+
+.profile-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.update-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.update-form input[type="text"],
+.update-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.update-form button {
+    padding: 10px 20px;
+    background-color: #E89214;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-form button:hover {
+    background-color: #cb7e12;
+}
