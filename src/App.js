@@ -19,6 +19,9 @@ import TopTourSection from './components/TopTourSection';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import config from './config';
+import UserAccount from './components/UserAccount';
+import { AuthProvider } from './AuthContext';
+import BookingsPage from './components/BookingsPage';
 
 function App() {
   const [tourData, setTourData] = useState([]);
@@ -35,6 +38,7 @@ function App() {
   }, [])
 
   return (
+    <AuthProvider>
     <div className="App">
       <Header />
       <div className='main-wrapper'>
@@ -57,10 +61,13 @@ function App() {
               <Route path='pending' element={<PendingTravelBuddies />} />
             </Route>
           </Route>
+            <Route path="/bookings" element={<BookingsPage />} />
+            <Route path="/useraccount" element={<UserAccount />} />
         </Routes>
       </div>
       <Footer/>
     </div>
+    </AuthProvider>
   );
 }
 

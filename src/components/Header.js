@@ -1,9 +1,20 @@
-import React from "react"
+import React, { useContext } from 'react';
 import "../css/HeaderFooter.css"
 import logo from "../image/logo.jpg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
+
+
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
@@ -15,7 +26,16 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link className="nav-link active" aria-current="page" to="/signin">Login/Register</Link>
+            {user ? (
+                  <>
+                    <Link to="/useraccount" className="nav-link">
+                     Welcome, {user.name}
+                    </Link>
+                    <button onClick={handleLogout} className="logout-button">Logout</button>
+                  </>
+                ) : (
+                  <Link className="nav-link active" to="/signin">Login/Register</Link>
+                )}
             </div>
           </div>
         </div>

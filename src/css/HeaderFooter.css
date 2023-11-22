@@ -21,5 +21,22 @@
     height: 70px;
     width: 150px; 
   }
-  
+
+.logout-button {
+  background-color: #fff; /* White background */
+  color: #E89214; /* Main color for text */
+  border: 2px solid #E89214; /* Border color same as your main color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Padding inside the button */
+  font-weight: bold; /* Make the text bold */
+  cursor: pointer; /* Cursor indicates clickable item */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+}
+
+.logout-button:hover {
+  background-color: #E89214; /* Main color for background on hover */
+  color: #fff; /* White text on hover */
+}
+
   
