@@ -2,7 +2,7 @@
 import React, { createContext, useState } from 'react';
 
 export const AuthContext = createContext({
-  user: null, // You can set default values here if you like
+  user: null,
   login: () => {},
   logout: () => {}
 });
