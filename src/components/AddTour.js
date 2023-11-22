@@ -7,36 +7,36 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import config from '../config';
 
   
 const defaultTheme = createTheme();
 
 export default function AddTour() {
   
-  const [availID, setAvailID] = useState('');
+  const [tourName, setTourName] = useState('');
   const [location, setLocation] = useState('');
   const [duration, setDuration] = useState('');
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
-  const [tourName, setTourName] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  
 
-
-  /** Make sure naming is correct */
   const handleSubmit = (event) => {
     event.preventDefault();
     const newTour = {
-      availID: availID,
+      tourName: tourName,
       location: location,
       duration: duration,
       price: price,
-      desc: desc,
-      tourName: tourName
+      description: desc,
+      imageURL: imageUrl      
     }
 
     console.log(newTour);
-    // axios.post('', newTour)
-    //   .then(res => console.log(res.data))
-
+      axios.post(config.apiUrl + '/api/admin/tours/addTour', newTour)
+       .then(res => console.log(res.data))
+    
   };
    return (
      <ThemeProvider theme={defaultTheme}>
@@ -51,17 +51,17 @@ export default function AddTour() {
            }}
          >
          
-           <Box component="form" noValidate  onSubmit={handleSubmit} sx={{ mt: 3 }}>
+           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
              <Grid container spacing={2}>
                <Grid item xs={12}>
                  <TextField
-                   name="availID"
+                   name="tourName"
                    required
                    fullWidth
-                   id="availID"
-                   label="Availiability ID"
+                   id="tourName"
+                   label="Tour Name"
                    autoFocus
-                   onChange={(event) => setAvailID(event.target.value)}
+                   onChange={(event) => setTourName(event.target.value)}
                  />
                </Grid>
                <Grid item xs={12}>
@@ -106,11 +106,12 @@ export default function AddTour() {
                </Grid>
                <Grid item xs={12}>
                  <TextField
+                   required
                    fullWidth
-                   name="preferences"
-                   label="Tour Name"
-                   id="tourName"
-                   onChange={(event) => setTourName(event.target.value)}
+                   name="imageUrl"
+                   label="Image URL"
+                   id="imageUrl"
+                   onChange={(event) => setImageUrl(event.target.value)}
                  />
                </Grid>
              </Grid>
