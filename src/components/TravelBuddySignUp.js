@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { Input } from '@mui/material';
+import config from '../config';
 
 const defaultTheme = createTheme();
 
@@ -18,12 +19,10 @@ function TravelBuddySignUp() {
       const [username, setUsername] = useState('');
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
-      const [desc, setDesc] = useState('');
+      const [description, setDescription] = useState('');
+      const [applicationStatus, setApplicationStatus] = useState('Pending')
       const [resumeURL, setResumeURL] = useState('');
       const [profileImgURL, setProfileImgURL] = useState('');
-
-      // Blob storage to save files
-      // save urls to DB table
 
       const handleSubmit = (event) => {
         event.preventDefault();
@@ -33,14 +32,15 @@ function TravelBuddySignUp() {
           username: username,
           email: email,
           password: password,
-          desc: desc,
+          description: description,
+          applicationStatus: applicationStatus,
           resumeURL: resumeURL,
-          profileImgURL: profileImgURL
+          profileImageURL: profileImgURL
         }
 
         console.log(newTravelBuddy);
-        // axios.post('', newAccount)
-        //   .then(res => console.log(res.data))
+        axios.post(config.apiUrl + '/api/signUp/travelBuddy', newTravelBuddy)
+          .then(res => console.log(res.data))
 
       };
 
@@ -127,7 +127,7 @@ function TravelBuddySignUp() {
                       type="desc"
                       id="desc"
                       autoComplete="desc"
-                      onChange={(event) => setDesc(event.target.value)}
+                      onChange={(event) => setDescription(event.target.value)}
                     />
                   </Grid>
 
