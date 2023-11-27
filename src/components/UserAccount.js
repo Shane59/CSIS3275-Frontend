@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/UserAccount.css';
 
 const UserAccount = () => {
@@ -9,7 +10,7 @@ const UserAccount = () => {
                 <nav className="navigation">
                     <ul className="menu">
                         <li className="menu-item active"><a href="#">Profile</a></li>
-                        <li className="menu-item"><a href="#">Bookings</a></li>
+                        <li className="menu-item"><Link to="/bookings">Bookings</Link></li>
                         <li className="menu-item"><a href="#">Settings</a></li>
                     </ul>
                 </nav>
