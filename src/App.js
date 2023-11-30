@@ -16,7 +16,6 @@ import ApprovedTravelBuddies from './components/ApprovedTravelBuddies';
 import PendingTravelBuddies from './components/PendingTravelBuddies';
 import AdminPage from './components/AdminPage';
 import UserAccount from './components/UserAccount';
-import BookingsPage from './components/BookingsPage';
 
 import TopTourSection from './components/TopTourSection';
 import axios from 'axios';
@@ -60,8 +59,6 @@ function App() {
             </Route>
           </Route>
           <Route path="/useraccount/:travelBuddyId" element={<UserAccount/>}/>
-          <Route path="/bookings" element={<BookingsPage />} />
-          <Route path="/useraccount" element={<UserAccount />} />
 
         </Routes>
       </div>
