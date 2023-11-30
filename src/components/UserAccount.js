@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+=======
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+>>>>>>> refs/remotes/origin/user-account-page
 import '../css/UserAccount.css';
 import config from '../config';
 import axios from 'axios';
@@ -24,7 +29,7 @@ const UserAccount = () => {
                 <nav className="navigation">
                     <ul className="menu">
                         <li className="menu-item active"><a href="#">Profile</a></li>
-                        <li className="menu-item"><a href="#">Bookings</a></li>
+                        <li className="menu-item"><Link to="/bookings">Bookings</Link></li>
                         <li className="menu-item"><a href="#">Settings</a></li>
                     </ul>
                 </nav>
