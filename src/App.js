@@ -15,6 +15,8 @@ import AddTour from './components/AddTour';
 import ApprovedTravelBuddies from './components/ApprovedTravelBuddies';
 import PendingTravelBuddies from './components/PendingTravelBuddies';
 import AdminPage from './components/AdminPage';
+import UserAccount from './components/UserAccount';
+
 import TopTourSection from './components/TopTourSection';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -56,6 +58,8 @@ function App() {
               <Route path='pending' element={<PendingTravelBuddies />} />
             </Route>
           </Route>
+          <Route path="/useraccount/:travelBuddyId" element={<UserAccount/>}/>
+
         </Routes>
       </div>
       <Footer/>
