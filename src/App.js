@@ -59,12 +59,10 @@ function App() {
               <Route path='pending' element={<PendingTravelBuddies />} />
             </Route>
           </Route>
-<<<<<<< HEAD
           <Route path="/useraccount/:travelBuddyId" element={<UserAccount/>}/>
-=======
           <Route path="/bookings" element={<BookingsPage />} />
           <Route path="/useraccount" element={<UserAccount />} />
->>>>>>> refs/remotes/origin/user-account-page
+
         </Routes>
       </div>
       <Footer/>
