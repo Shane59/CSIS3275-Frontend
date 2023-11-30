@@ -13,7 +13,7 @@ const TourBuddyCard = (props) => {
   const { tourId } = useParams();
   return (
     <Link to={`/${tourId}/tourbuddy/${props.id}`} className="card tour-buddy-card">
-      <div className=" mb-3">
+      <div className="mb-3">
         <div className="row g-0">
           <div className="col-md-4">
             <img className="card-img" src={props.url} alt="" />

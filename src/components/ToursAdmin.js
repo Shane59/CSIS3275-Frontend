@@ -1,47 +1,55 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, Outlet } from "react-router-dom";
+import config from "../config";
 
 
 const Tour = (props) => {
 
     return (
-       
             <tr id="tourAdminRow">
                 <td>{props.tourID}</td>
-                <td>{props.availiabilityID}</td>
+                <td>{props.name}</td>
                 <td>{props.location}</td>
                 <td>{props.duration}</td>
                 <td>{props.price}</td>
                 <td>{props.desc}</td>
-                <td>{props.name}</td>
                 <td>{props.imageUrl}</td>
                 <td><button id="editBtn" type="button" className="btn btn-primary">Edit</button></td>
-                <td><button id="deleteBtn" type="button" className="btn btn-danger">Delete</button></td>
-
+                <td><button id="deleteBtn" type="button" className="btn btn-danger"
+                        onClick={() => {                            props.deleteTour(props.tourID)
+                        }}
+                        >Delete</button>
+                </td>
             </tr>
         
     )
 }
 
-
-
-//exported component, list all tours
 function ToursAdmin() {
 
-    // const [tours, setTours] = useState([]);
+    const [tours, setTours] = useState([]);
 
-    // useEffect(() => {
-    //     axios
-    //         .get('/admin/tours')
-    //         .then((response) => {
-    //             setTours(response.data)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         })
-    // }, [])
+    useEffect(() => {
+        axios
+            .get(config.apiUrl + '/api/admin/tours')
+            .then((response) => {
+                setTours(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
 
+    const deleteTour = (tourID) => {
+        axios
+            .delete(config.apiUrl + '/api/admin/tours/delete/' + tourID)
+            .then((response) =>{
+                console.log(response.data);
+            });
+
+            setTours(tours.filter((el) => el.tourID !== tourID));
+    }
 
     return (
         <div>
@@ -59,76 +67,32 @@ function ToursAdmin() {
                 <thead >
                     <tr>
                     <th scope="col">Tour ID</th>
-                    <th scope="col">Availiability ID</th>
+                    <th scope="col">Tour Name</th>
                     <th scope="col">Location</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Price</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Tour Name</th>
                     <th scope="col">Tour Image</th>
                     <th></th>
                     <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <Tour 
-                        tourID='1'
-                        availiabilityID='2'
-                        location='Vancouver'
-                        duration='2.00'
-                        price='99.99'
-                        desc='a good tour'
-                        name='TOUR TOUR TOUR'
-                        imageUrl="asdf"
-                        />
-    
-                    <Tour 
-                        tourID='1'
-                        availiabilityID='2'
-                        location='Vancouver'
-                        duration='2.00'
-                        price='99.99'
-                        desc='a good tour'
-                        name='TOUR TOUR TOUR'
-                        imageUrl="asdf"
-                        />
-                    <Tour 
-                        tourID='1'
-                        availiabilityID='2'
-                        location='Vancouver'
-                        duration='2.00'
-                        price='99.99'
-                        desc='a good tour'
-                        name='TOUR TOUR TOUR'
-                        imageUrl="asdf"
-                        />
-    
-                    <Tour 
-                        tourID='1'
-                        availiabilityID='2'
-                        location='Vancouver'
-                        duration='2.00'
-                        price='99.99'
-                        desc='a good tour'
-                        name='TOUR TOUR TOUR'
-                        imageUrl="asdf"
-                        />  
-
-                    {/* {Loop to render all tours from db} */}
-                    {/* {bookings.map((booking) => {
+                <tbody>                    
+                    {tours.map((tour) => {
                         return (
                             <Tour
-                                tourID={tour.}
-                                availiabilityID={tour.}
-                                location={tour.}
-                                duration={tour.}
-                                price={tour.}
-                                desc={tour.}
-                                name={tour.}
-                                imageUrl={tour.}/>
+                                tourID={tour.tourID}
+                                location={tour.location}
+                                name={tour.tourName}
+                                duration={tour.duration}
+                                price={tour.price}
+                                desc={tour.description}
+                                imageUrl={tour.imageURL}
+                                // editTour="placeholder"
+                                deleteTour={deleteTour}
+                                />
                         );    
-                    })} */}
-
+                    })}
                 </tbody>
             </table>
         </div>

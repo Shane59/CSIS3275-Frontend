@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
+
 
 const PendingTravelBuddy = (props) => {
-    return (
-        
+    return (       
         <tr>
             <td>{props.travelBuddyID}</td>
-            <td>{props.fname}</td>
-            <td>{props.lname}</td>
+            <td>{props.firstname}</td>
+            <td>{props.lastname}</td>
             <td>{props.email}</td>
             <td>{props.desc}</td>
             <td>{props.username}</td>
@@ -14,17 +16,40 @@ const PendingTravelBuddy = (props) => {
             <td>{props.imageURL}</td>
             <td>{props.appStatus}</td>
             <td><button id="editBtn" type="button" className="btn btn-primary">Edit</button></td>
-            <td><button id="deleteBtn" type="button" className="btn btn-danger">Delete</button></td>
+            <td><button id="deleteBtn" type="button" className="btn btn-danger"
+                    onClick={() => {
+                        props.deleteTravelBuddy(props.travelBuddyID)
+                    }}>Delete</button></td>
         </tr>
         
     )
 }
 
-
 function PendingTravelBuddies() {
 
-    //get only travel buddies with Pending ApplicationStatus
-    // filter map function
+    const [travelBuddies, setTravelBuddies] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get(config.apiUrl + '/api/admin/travelBuddies/pending')
+            .then((response) => {
+                setTravelBuddies(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
+
+    const deleteTravelBuddy = (travelBuddyID) => {
+        axios
+            .delete(config.apiUrl + '/api/admin/travelBuddies/pending/delete/' + travelBuddyID)
+            .then((response) =>{
+                console.log(response.data);
+            });
+
+            setTravelBuddies(travelBuddies.filter((el) => el.travelBuddyID !== travelBuddyID));
+    }
+
     return (
         <div>
             <table id="travelBuddyTable" className="table table-hover table-bordered">
@@ -42,18 +67,21 @@ function PendingTravelBuddies() {
                     </tr>
                 </thead>
                 <tbody>
-                    <PendingTravelBuddy 
-                        travelBuddyID='1'
-                        fname='John'
-                        lname='Doe'
-                        email='johndoe@me.com'
-                        desc='good guy'
-                        username='johndoe'
-                        resume='blob storage'
-                        imageURL='blob storage'
-                        appStatus='Pending'/>
-
-
+                    {travelBuddies.map((travelBuddy) => {
+                        return (
+                            <PendingTravelBuddy 
+                                travelBuddyID={travelBuddy.travelBuddyID}
+                                firstname={travelBuddy.firstName}
+                                lastname={travelBuddy.lastName}
+                                email={travelBuddy.email}
+                                desc={travelBuddy.description}
+                                username={travelBuddy.username}
+                                resume={travelBuddy.resumeURL}
+                                imageURL={travelBuddy.profileImageURL}
+                                appStatus={travelBuddy.applicationStatus}
+                                deleteTravelBuddy={deleteTravelBuddy}/>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
