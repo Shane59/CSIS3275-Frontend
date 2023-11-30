@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
@@ -7,7 +7,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs, { Dayjs } from 'dayjs';
 import { styled } from "@mui/material/styles";
 import { PickersDay } from "@mui/x-date-pickers/PickersDay";
-import { Link } from "react-router-dom";
+import config from '../config';
+import axios from 'axios';
 
 import "../css/TourBuddyDetail.css";
 import PaymentForm from "./PaymentForm";
@@ -37,18 +38,24 @@ const ServerDay = (props) => {
   );
 };
 
-
-/**
- * get tour buddy data by id from db
- * - image url
- * - name
- * - star rate
- * - review information
- * - description
- * - available tours and time
- */
 const TourBuddyDetail = (props) => {
   const { tourId, tourBuddyId } = useParams();
+  const [travelBuddyData, setTravelBuddyData] = useState();
+  useEffect(() => {
+    axios.get(config.apiUrl + '/api/travelBuddy', {
+      params: {
+        tourID: tourId
+      }
+    })
+      .then(response => {
+        const travelBuddy = response.data.filter((travelBuddy)=>travelBuddy.travelBuddyID == tourBuddyId);
+        setTravelBuddyData(...travelBuddy);
+        console.log(...travelBuddy);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },[])
   const [calenderValue, setCalenderValue] = useState(dayjs());
   const [timeSlot, setTimeSlot] = useState();
   const [highlightedDays, setHighlitedDays] = useState([
@@ -59,13 +66,15 @@ const TourBuddyDetail = (props) => {
   ]);
   return (
     <div className="tourbuddy-detail-wrapper">
+      {travelBuddyData !== undefined ?
+      <>
       <div className="row mb-5">
-        <img className="col rounded-circle" src="https://xsgames.co/randomusers/assets/avatars/male/7.jpg" alt="" />
+        <img className="col rounded-circle" src={travelBuddyData.profileImageURL} alt="" />
         <div className="col">
-          <h2>Name</h2>
-          <Rating name="read-only" value={4} readOnly />
+          <h2>{travelBuddyData.firstName} {travelBuddyData.lastName}</h2>
+          <Rating name="read-only" value={travelBuddyData.averageStarRate} readOnly />
           <div>
-          Meet Alex, your charismatic tour guide from Vancouver, Canada, where stunning natural beauty meets vibrant urban life. With a passion for sharing the wonders of the Pacific Northwest, Alex combines local expertise with a friendly demeanor to create an unforgettable touring experience. Whether navigating through the lush landscapes of Stanley Park, unraveling the history of Gastown's cobbled streets, or recommending the best spots for a taste of poutine, Alex ensures that every moment of your tour is infused with enthusiasm and a genuine love for Vancouver's diverse culture. Get ready to explore the city's hidden gems and iconic landmarks with Alex as your guide, making your visit to Vancouver an enriching and delightful adventure.
+          {travelBuddyData.description}
           </div>
         </div>
       </div>
@@ -106,6 +115,8 @@ const TourBuddyDetail = (props) => {
         calenderValue={calenderValue}
         timeSlot={timeSlot}
       />
+      </>
+      : <p>Loading</p>}
     </div>
   )
 }

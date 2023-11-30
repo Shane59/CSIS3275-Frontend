@@ -2,15 +2,31 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TourBuddySection from "./TourBuddySection";
+import config from '../config';
+import axios from 'axios';
 
 const TourDetailPage = (props) => {
   const { tourId } = useParams();
   const [tour, setTour] = useState();
+  const [travelBuddies, setTravelBuddies] = useState([]);
 
   
   useEffect(() => {
     const selected = props.tourData.find((tour) => tour.tourID == tourId);
     setTour(selected);
+
+    axios.get(config.apiUrl + '/api/travelBuddy', {
+      params: {
+        tourID: tourId
+      }
+    })
+      .then(response => {
+        setTravelBuddies(response.data);
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }, [])
 
   return (
@@ -26,7 +42,7 @@ const TourDetailPage = (props) => {
           <img className="col w-50" src={tour.imageURL} alt="image" />
         </div>
         <div className="tour-buddy-wrapper">
-          <TourBuddySection />
+          <TourBuddySection travelBuddies={travelBuddies}/>
         </div>
         </div>
         :
