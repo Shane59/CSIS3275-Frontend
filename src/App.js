@@ -27,7 +27,6 @@ function App() {
     axios.get(config.apiUrl + '/api/tours')
       .then(response => {
         setTourData(response.data)
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error)

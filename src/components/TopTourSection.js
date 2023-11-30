@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from 'react';
 import PackageCard from './PackageCard';
 import SearchBar from './SearchBar';
 
 
-const TopTourSection = ({tourData}) => {
-  const [tours, setTours] = useState(tourData);
+const TopTourSection = ({ tourData }) => {
+  const [tours, setTours] = useState(tourData || []);
+
+  useEffect(() => {
+    setTours(tourData)
+  }, [tourData]);
   
   const handleSearch = (searchValue) => {
     const filteredData = tourData.filter((tour) => 
@@ -15,6 +19,9 @@ const TopTourSection = ({tourData}) => {
   }
 
   const TourCards = () => {
+    if (tourData.length === 0) {
+      return (<p>Laoding...</p>);
+    }
     let cards = [];
     tours.forEach((data) => {
       cards.push(<PackageCard
