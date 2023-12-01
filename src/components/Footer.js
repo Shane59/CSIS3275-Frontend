@@ -40,7 +40,7 @@ const Footer = () => {
                 <div className="col-lg-6 col-md-6 text-end mb-3">
                 <a href="#" className="footer-link me-3">Digital Accessibility</a>
                 <a href="#" className="footer-link me-3">Site Map</a>
-                <a href="#" className="footer-link">Help</a>
+                <a href={JSON.parse(localStorage.getItem('currentUser')) === "admin" ? "admin" : "/"} className="footer-link">Administration</a>
                 </div>
             </div>
             </div>

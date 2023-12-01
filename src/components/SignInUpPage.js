@@ -3,13 +3,11 @@ import '../css/SignInPage.css';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import TravelBuddySignUp from './TravelBuddySignUp';
-import { NavLink } from 'react-router-dom';
 
  function SignInUpPage() {
 
   const[signIn, setSignIn] = useState("SignIn");
-
-
+  
   return (
     <div id="SignInPageContainer" className="container">
       <div id="SignInPageChild">

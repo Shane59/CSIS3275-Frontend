@@ -1,7 +1,33 @@
-import React from "react"
+import React, {useState} from "react"
 import "../css/HeaderFooter.css"
 import logo from "../image/logo.jpg"
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
+const LogOut = () => {
+  const [redirect, setRedirect] = useState(false);
+
+  const handleLogOut = () => {
+    setRedirect(true);
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  return (
+    <div className="navbar-nav">
+      <Link onClick={handleLogOut} className="nav-link active" aria-current="page" to="/">Log Out</Link>
+    </div>
+  )
+}
+
+
+const LogIn = () => {
+  return (
+    <div className="navbar-nav">
+
+        <Link className="nav-link active" aria-current="page" to="/signIn">Login/Register</ Link>
+    </div>
+  )
+}
 
 const Header = () => {
   return (
@@ -15,7 +41,19 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link className="nav-link active" aria-current="page" to="/signin">Login/Register</Link>
+
+              {/* {
+                if (localStorage.length > 1) {
+                  <LogOut />
+                } elif () {
+
+                } elif () {
+
+                } else {
+
+                }
+              } */}
+              {localStorage.length > 1 ? <LogOut/>: localStorage.length === 1 && localStorage.getItem('currentUser') !== null ? <LogOut/> : localStorage.length === 1 && localStorage.getItem('loglevel') !== null ? <LogIn /> : localStorage.length === 0 ? <LogIn /> : null}
             </div>
           </div>
         </div>

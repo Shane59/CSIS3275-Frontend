@@ -41,3 +41,8 @@
   width: 1000px;
   margin: 0 auto;
 }
+
+.signin-button {
+  background: none;
+  border: none;
+}

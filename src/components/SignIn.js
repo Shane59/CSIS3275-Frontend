@@ -7,17 +7,31 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+import config from '../config';
 
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    
+    const signInRequest = {
+      username: data.get('username'),
+      password: data.get('password')
+    }
+
+    axios.post(config.apiUrl + "/api/signIn", signInRequest)
+      .then((response) => {
+        localStorage.setItem('currentUser', JSON.stringify(response.data));
+        window.location.href = '/';
+      })
+      .catch((error) => {
+        alert("username or password is wrong.")
+        console.log(error)
     });
   };
 
@@ -33,15 +47,15 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit}  noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField
@@ -61,7 +75,9 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
+              <button className='signin-button' type='submit' style={{textDecoration:'none', color:'white'}}>
               Sign In
+              </button>
             </Button>
             <Grid container>
               <Grid item xs>
