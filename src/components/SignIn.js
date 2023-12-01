@@ -9,7 +9,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import config from '../config';
-import { NavLink } from 'react-router-dom';
 
 
 const defaultTheme = createTheme();
@@ -27,9 +26,11 @@ export default function SignIn() {
 
     axios.post(config.apiUrl + "/api/signIn", signInRequest)
       .then((response) => {
-        localStorage.setItem('currentUser', JSON.stringify(response.data));   
+        localStorage.setItem('currentUser', JSON.stringify(response.data));
+        window.location.href = '/';
       })
       .catch((error) => {
+        alert("username or password is wrong.")
         console.log(error)
     });
   };
@@ -74,9 +75,9 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              <NavLink to="/" style={{textDecoration:'none', color:'white'}}>
+              <button className='signin-button' type='submit' style={{textDecoration:'none', color:'white'}}>
               Sign In
-              </NavLink>
+              </button>
             </Button>
             <Grid container>
               <Grid item xs>
