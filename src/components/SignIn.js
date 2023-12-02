@@ -27,7 +27,11 @@ export default function SignIn() {
     axios.post(config.apiUrl + "/api/signIn", signInRequest)
       .then((response) => {
         localStorage.setItem('currentUser', JSON.stringify(response.data));
-        window.location.href = '/';
+        if (JSON.parse(localStorage.getItem('currentUser')) === "admin") {
+          window.location.href = '/admin';
+        } else {
+          window.location.href = '/';
+        }
       })
       .catch((error) => {
         alert("username or password is wrong.")

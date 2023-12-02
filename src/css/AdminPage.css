@@ -1,17 +1,11 @@
-/* CSS for 
-ToursAdmin.js
-TravelBuddiesAdmin.js 
-ProfileAdmin.js 
-BookingsAdmin.js
-AdminProfile.js
-AdminPage.js
-*/
-
 li {
     list-style: none;
 }
 
-/*Headers in all admin components*/
+#adminPageContainer {
+    display: flex;
+}
+
 .adminPageHeaders { 
     display: flex;
     justify-content: flex-start;
@@ -21,9 +15,12 @@ li {
     min-height: 100px;
     padding-left: 100px;
 }
-
+.adminPageBody {
+    flex: 1 1 auto;
+}
 /* AdminPage.js */
 #adminSidebar {
+    flex: 1 1 auto;
     background-color: #E89214;
     color: white;
     float: left;

@@ -1,8 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import config from '../config';
 
 
 const PaymentForm = (props) => {
+  const handleBooking = async () => {
+    try {
+      const touristID = JSON.parse(localStorage.getItem('currentUser')).touristID;
+      const response = await axios.post(config.apiUrl + `/api/booking/create?touristID=${touristID}&travelBuddyID=${props.travelBuddyID}&tourID=${props.tourID}&startTime=12:00:00`);
+    } catch (error) {
+      console.error('API Error:', error);
+    }
+  };
+
   return (
     <>
       <div>
@@ -30,8 +41,8 @@ const PaymentForm = (props) => {
         </form>
       </div>
       <div className="text-end mt-5">
-        <Link to={`/checkout?tourId=${props.tourId}&tourBuddyId=${props.tourBuddyId}&date=${props.calenderValue['$D']}/${props.calenderValue['$M']+1}/${props.calenderValue['$y']}&time=${props.timeSlot}`}>
-          <button className="btn">Pay Now</button>
+        <Link to={`/checkout?tourId=${props.tourID}&travelBuddyName=${props.travelBuddyFirstName} ${props.travelBuddyLastName}&date=${props.calenderValue['$D']}/${props.calenderValue['$M']+1}/${props.calenderValue['$y']}&time=12:00:00`}>
+          <button className="btn" onClick={handleBooking}>Pay Now</button>
         </Link>
       </div>
     </>
