@@ -52,7 +52,7 @@ function ToursAdmin() {
     }
 
     return (
-        <div>
+        <div className="adminPageBody">
             <div>
                 <header className="adminPageHeaders">
                     <h3>Manage Tours</h3>

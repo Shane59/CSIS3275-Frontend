@@ -110,10 +110,12 @@ const TourBuddyDetail = (props) => {
         </div>
       </div>
       <PaymentForm
-        tourId={tourId}
-        tourBuddyId={tourBuddyId}
+        tourID={tourId}
+        travelBuddyID={travelBuddyData.travelBuddyID}
         calenderValue={calenderValue}
         timeSlot={timeSlot}
+        travelBuddyFirstName={travelBuddyData.firstName}
+        travelBuddyLastName={travelBuddyData.lastName}
       />
       </>
       : <p>Loading</p>}
